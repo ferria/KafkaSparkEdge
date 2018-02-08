@@ -34,7 +34,7 @@ RUN curl -L http://mirrors.koehn.com/apache/spark/spark-2.2.1/spark-2.2.1-bin-ha
 ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/bin:$PATH
 
 RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
-COPY supervisord*.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 2181 2888 3888 22 80 8080 8081 4040 4044
 
