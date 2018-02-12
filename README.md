@@ -17,4 +17,4 @@ You may need to run these commands as root.
 
 Download: `docker pull ferria/kafkaspark`
 
-Run: `docker run -p 2181:2181 -p 9092:9092 -it anirbandas/kafkaspark_edge`
+Run: `docker run -p 2181:2181 -p 9092:9092 -it ferria/kafkaspark`
