@@ -5,6 +5,10 @@ MAINTAINER Anirban Das <anirban.dash@gmail.com>
 ENV workdir /opt
 ENV SBT_VERSION 1.1.0
 
+COPY ../*.sh $workdir/
+
+COPY ../*.py $workdir/
+
 RUN apt-get update && apt-get -y install \
     build-essential autoconf automake libtool git wget curl supervisor \
     openjdk-8-jdk maven scala \
