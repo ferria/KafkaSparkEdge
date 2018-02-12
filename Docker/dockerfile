@@ -36,7 +36,7 @@ RUN curl -L http://mirrors.koehn.com/apache/spark/spark-2.2.1/spark-2.2.1-bin-ha
 
 ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/bin:$PATH
 
-RUN pip install pyspark
+RUN pip install --no-cache-dir pyspark
 
 RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
