@@ -21,8 +21,6 @@ RUN curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_V
   
 RUN pip install --upgrade pip
 
-RUN pip install pyspark
-
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 RUN curl -L http://mirrors.ibiblio.org/apache/kafka/1.0.0/kafka_2.11-1.0.0.tgz| \
@@ -37,6 +35,8 @@ RUN curl -L http://mirrors.koehn.com/apache/spark/spark-2.2.1/spark-2.2.1-bin-ha
     tar xzv -C $workdir -f - && mv $workdir/spark* $workdir/spark
 
 ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/bin:$PATH
+
+RUN pip install pyspark
 
 RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
