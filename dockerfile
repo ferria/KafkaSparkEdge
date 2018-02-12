@@ -5,9 +5,11 @@ MAINTAINER Anirban Das <anirban.dash@gmail.com>
 ENV workdir /opt
 ENV SBT_VERSION 1.1.0
 
-COPY ../*.sh $workdir/
+COPY *.sh $workdir/
 
-COPY ../*.py $workdir/
+COPY *.py $workdir/
+
+RUN chmod +x $workdir/*.sh
 
 RUN apt-get update && apt-get -y install \
     build-essential autoconf automake libtool git wget curl supervisor \
@@ -46,9 +48,6 @@ RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 9092 2181 2888 3888 22 80 8080 8081 4040 4044
-
-COPY entrypoint.sh $workdir/
-RUN chmod +x $workdir/entrypoint.sh
 
 VOLUME ["/var/log", "/tmp"]
 
