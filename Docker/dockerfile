@@ -8,6 +8,7 @@ ENV SBT_VERSION 1.1.0
 RUN apt-get update && apt-get -y install \
     build-essential autoconf automake libtool git wget curl supervisor \
     openjdk-8-jdk maven scala \
+    python-pip nano \
     zookeeper zookeeper-bin zookeeperd && \
     rm -rf /var/lib/apt/lists/*
 
@@ -17,6 +18,10 @@ RUN curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_V
   apt-get update && \
   apt-get install sbt && \
   sbt sbtVersion
+  
+RUN pip install --upgrade pip
+
+RUN pip install pyspark
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
