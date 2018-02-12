@@ -44,6 +44,9 @@ ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/
 
 RUN pip install --no-cache-dir pyspark
 
+RUN wget http://search.maven.org/remotecontent?filepath=org/apache/spark/spark-streaming-kafka-0-8-assembly_2.11/2.2.1/spark-streaming-kafka-0-8-assembly_2.11-2.2.1.jar -O $workdir/spark-streaming-kafka-0-8-assembly_2.11.jar
+RUN wget http://search.maven.org/remotecontent?filepath=org/apache/spark/spark-streaming-kafka-0-10-assembly_2.10/2.2.1/spark-streaming-kafka-0-10-assembly_2.10-2.2.1.jar -O $workdir/spark-streaming-kafka-0-10-assembly_2.11.jar
+
 RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
