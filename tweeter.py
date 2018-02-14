@@ -47,6 +47,7 @@ def main(topic):
         except KeyboardInterrupt:
             for task in tasks:
                 task.stop()
+            break
         
         
 if __name__ == "__main__":
