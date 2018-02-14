@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     sc = SparkContext(appName="PythonStreamingKafkaWordCount")
     quiet_logs(sc)
-    ssc = StreamingContext(sc, 10) # 10 Second Windows
+    ssc = StreamingContext(sc, 5) # 10 Second Windows
     model = markov.make_model()
 
     zkQuorum, topic = sys.argv[1:]
