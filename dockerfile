@@ -12,6 +12,8 @@ COPY *.txt $workdir/
 
 RUN chmod +x $workdir/*.sh
 
+RUN mkdir $workdir/spark
+
 RUN apt-get update && apt-get -y install \
     build-essential autoconf automake libtool git wget curl supervisor \
     openjdk-8-jdk maven scala \
