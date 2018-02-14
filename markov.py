@@ -13,6 +13,10 @@ def tweet(model, length=140, out=sys.stdout):
 	tweet = model.make_short_sentence(length) + '\n'
 	out.write(tweet)
 
+def generate_tweets(model, length=140):
+	while True:
+		yield model.make_short_sentence(length)
+
 
 if __name__ == '__main__':
 	model = make_markov()
