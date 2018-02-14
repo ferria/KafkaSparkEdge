@@ -24,7 +24,9 @@ class Producer(threading.Thread):
 
 
         while not self.stop_event.is_set():
-            producer.send(self.topic, next(self.gen))
+            tweet = next(self.gen)
+            print tweet
+            producer.send(self.topic, tweet)
             time.sleep(0.5)
 
         producer.close()
@@ -53,4 +55,5 @@ def main(topic):
 if __name__ == "__main__":
 
     topic = sys.argv[-1]
+    print "Topic:", topic
     main(topic)
