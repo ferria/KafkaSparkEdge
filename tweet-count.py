@@ -53,7 +53,7 @@ if __name__ == "__main__":
     sc = SparkContext(appName="PythonStreamingKafkaWordCount")
     quiet_logs(sc)
     ssc = StreamingContext(sc, 5) # 10 Second Windows
-    model = markov.make_model()
+    model = markov.make_markov()
 
     zkQuorum, topic = sys.argv[1:]
     kvs = KafkaUtils.createStream(ssc, zkQuorum, "spark-streaming-consumer", {topic: 1})
