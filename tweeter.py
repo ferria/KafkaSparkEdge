@@ -13,7 +13,7 @@ class Producer(threading.Thread):
         threading.Thread.__init__(self)
         self.stop_event = threading.Event()
         self.topic = topic
-        self.model = markov.make_model()
+        self.model = markov.make_markov()
         self.gen = markov.generate_tweets(model)
         
     def stop(self):
