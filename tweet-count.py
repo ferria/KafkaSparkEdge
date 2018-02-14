@@ -42,7 +42,6 @@ import re
 
 def include_tweet(tweet):
     #return '@' in tweet
-    #return 'RT' in tweet
     return '#' in tweet
 
 if __name__ == "__main__":
@@ -58,8 +57,8 @@ if __name__ == "__main__":
     zkQuorum, topic = sys.argv[1:]
     kvs = KafkaUtils.createStream(ssc, zkQuorum, "spark-streaming-consumer", {topic: 1})
     lines = kvs.map(lambda x: x[1])
-    counts = lines.filter(include_tweet) \
-        .flatMap(lambda line: line.split(" ")) \
+    counts = lines.flatMap(lambda line: line.split(" ")) \
+        .filter(include_tweet) \
         .map(lambda word: (word, 1)) \
         .reduceByKey(lambda a, b: a+b)
     counts.pprint()
