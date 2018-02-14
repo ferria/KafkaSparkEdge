@@ -8,6 +8,7 @@ ENV SBT_VERSION 1.1.0
 COPY *.sh $workdir/
 COPY *.py $workdir/
 COPY *.jar $workdir/
+COPY *.txt $workdir/
 
 RUN chmod +x $workdir/*.sh
 
@@ -42,7 +43,7 @@ RUN curl -L http://mirrors.koehn.com/apache/spark/spark-2.2.1/spark-2.2.1-bin-ha
 
 ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/bin:$PATH
 
-RUN pip install --no-cache-dir pyspark tweepy kafka-python python-twitter
+RUN pip install --no-cache-dir pyspark tweepy kafka-python python-twitter markovify
 
 RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
