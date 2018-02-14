@@ -1,4 +1,4 @@
-### A container for deploying an Apache Kafka+Spark container on the edge
+# A container for deploying an Apache Kafka+Spark container on the edge
 
 ## Helpful Docker tips
 
@@ -8,9 +8,14 @@ Copy a file to docker with ```docker cp <local file> <container id>:<container f
 
 
 Open another terminal into container: ```docker exec -it <container id> bash```  
-
-    
+   
 You may need to run these commands as root. 
+
+### Cleanup
+
+Delete all containers: ```docker rm $(docker ps -a -q)```
+
+Delete all images: ```docker rmi $(docker images -q)```
 
 
 ## Running Kafka with Spark Streaming
