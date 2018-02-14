@@ -48,7 +48,7 @@ Word Count: ```wc.py localhost:2181 <topic>```
 
 Top Hashtags: ```state-tweet-count.py localhost:2181 <topic>```
 
-User Count Demo: ```state-user-demo.py <zk> <topicname> <username>```
+User Count Demo: ```state-user-demo.py localhost:2181 <topicname> <username>```
 
 A completed demo is available in state-user-count.py
 
@@ -57,6 +57,16 @@ The above scripts get passed to ```run.sh```.  For example, ```./run.sh wc.py lo
 ### Producer
 
 Tweeter: ```python tweeter.py <topic> <include username?>```
+
+
+### Usernames for Demo
+
+- Emma
+- Noah
+- Olivia
+- Liam
+- Ava
+- William
 
 
 
