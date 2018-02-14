@@ -35,7 +35,7 @@ def filter_fun(user):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        sys.stderr.write("Usage: stateful_network_wordcount.py <zk> <topicname> <username>\n")
+        sys.stderr.write("Usage: state-user-count.py <zk> <topicname> <username>\n")
         exit(-1)
 
     my_filter = filter_fun(sys.argv[3])

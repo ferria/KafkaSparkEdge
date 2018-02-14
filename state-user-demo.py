@@ -29,13 +29,14 @@ import tweeter
 def filter_fun(user):
     def filter_user(tweet):
         # PUT check for user here (true iff tweet by user)
+        # Tweets in form of "user:tweet"
         return True
     return filter_user
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        sys.stderr.write("Usage: stateful_network_wordcount.py <zk> <topicname> <username>\n")
+        sys.stderr.write("Usage: state-user-demo <zk> <topicname> <username>\n")
         exit(-1)
 
     if sys.argv[3].lower() not in map(str.lower,tweeter.users):
@@ -60,7 +61,6 @@ if __name__ == "__main__":
     lines = kvs.map(lambda x: x[1])
 
     # Need to get tweet from "user:tweet"
-
     # You can also write another predicate to filter just hash tags for a given user
     
     running_counts = lines.flatMap(lambda line: split(" "))\
