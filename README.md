@@ -24,10 +24,30 @@ Download: `docker pull ferria/kafkaspark`
 
 Run: `docker run -p 2181:2181 -p 9092:9092 -it ferria/kafkaspark`
 
+Leave this terminal running and open two more terminals side by side with ```docker exec -it <container id> bash```.
+
+### Ports
+
+ZooKeeper: 2181
+
+Kafka: 9092
+
 ## Shell Scripts
 
-```./produce.sh <topic>```
+Terminal producer: ```./produce.sh <topic>```
 
-```./consume.sh <topic>```
+Terminal Consumer: ```./consume.sh <topic>```
 
-```./run.sh <program> <args...>```
+Running programs with spark streaming: ```./run.sh <program> <args...>```
+
+## Python Scripts
+
+Word Count: ```wc.py localhost:2181 <topic>```
+
+Top Hashtags: ```state-tweet-count.py localhost:2181 <topic>```
+
+The scripts get passed to ```run.sh```.  For example, ```./run.sh wc.py localhost:2181 <topic>```
+
+
+
+
