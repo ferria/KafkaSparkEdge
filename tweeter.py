@@ -41,6 +41,13 @@ def main(topic):
     for t in tasks:
         t.start()
 
+    while True:
+        try:
+            time.sleep(100)
+        except KeyboardInterrupt:
+            for task in tasks:
+                task.stop()
+
     """
     time.sleep(10)
     
@@ -53,6 +60,9 @@ def main(topic):
         
         
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        sys.stderr.write("Usage: tweet-count.py <topic>\n")
+        exit(-1)
 
     topic = sys.argv[-1]
     print "Topic:", topic
