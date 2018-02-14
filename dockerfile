@@ -12,8 +12,6 @@ COPY *.txt $workdir/
 
 RUN chmod +x $workdir/*.sh
 
-# RUN mkdir $workdir/spark
-
 RUN apt-get update && apt-get -y install \
     build-essential autoconf automake libtool git wget curl supervisor \
     openjdk-8-jdk maven scala \
@@ -41,7 +39,7 @@ RUN curl -L http://apache.mesi.com.ar/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.ta
 ENV HADOOP_HOME $workdir/hadoop
 
 RUN curl -L http://mirrors.koehn.com/apache/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz| \
-    tar xzv -C $workdir -f - # && mv $workdir/spark* $workdir/spark
+    tar xzv -C $workdir -f -  && mv $workdir/spark-2.2.1-bin-hadoop2.7 $workdir/spark
 
 ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/bin:$PATH
 
