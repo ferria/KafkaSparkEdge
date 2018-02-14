@@ -52,7 +52,7 @@ The above scripts get passed to ```run.sh```.  For example, ```./run.sh wc.py lo
 
 ### Producer
 
-Tweeter: ```python tweeter.py <topic>```
+Tweeter: ```python tweeter.py <topic> <include username?>```
 
 
 
