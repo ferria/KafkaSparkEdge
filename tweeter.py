@@ -62,7 +62,7 @@ if __name__ == "__main__":
         exit(-1)
 
     topic = sys.argv[-2]
-    inclUser = sys.argv[-1].lower() in {'true','t'}
+    inclUser = sys.argv[-1].lower() in {'true','t', 'yes', 'y'}
     print "Topic:", topic
     print "Include usernames?:", inclUser
     main(topic, inclUser)
