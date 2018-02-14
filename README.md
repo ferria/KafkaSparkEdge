@@ -18,3 +18,11 @@ You may need to run these commands as root.
 Download: `docker pull ferria/kafkaspark`
 
 Run: `docker run -p 2181:2181 -p 9092:9092 -it ferria/kafkaspark`
+
+## Shell Scripts
+
+```./produce.sh <topic>```
+
+```./consume.sh <topic>```
+
+```./run.sh <program> <args...>```

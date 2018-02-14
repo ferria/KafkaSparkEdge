@@ -6,8 +6,8 @@ ENV workdir /opt
 ENV SBT_VERSION 1.1.0
 
 COPY *.sh $workdir/
-
 COPY *.py $workdir/
+COPY *.jar $workdir/
 
 RUN chmod +x $workdir/*.sh
 
@@ -42,10 +42,7 @@ RUN curl -L http://mirrors.koehn.com/apache/spark/spark-2.2.1/spark-2.2.1-bin-ha
 
 ENV PATH $workdir/hadoop/bin:$workdir/kafka/bin:$workdir/spark/bin:$workdir/sbt/bin:$PATH
 
-RUN pip install --no-cache-dir pyspark
-
-RUN wget http://search.maven.org/remotecontent?filepath=org/apache/spark/spark-streaming-kafka-0-8-assembly_2.11/2.2.1/spark-streaming-kafka-0-8-assembly_2.11-2.2.1.jar -O $workdir/spark-streaming-kafka-0-8-assembly_2.11.jar
-RUN wget http://search.maven.org/remotecontent?filepath=org/apache/spark/spark-streaming-kafka-0-10-assembly_2.10/2.2.1/spark-streaming-kafka-0-10-assembly_2.10-2.2.1.jar -O $workdir/spark-streaming-kafka-0-10-assembly_2.11.jar
+RUN pip install --no-cache-dir pyspark tweepy kafka-python python-twitter
 
 RUN apt-get install -y supervisor && mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
