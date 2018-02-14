@@ -1,4 +1,4 @@
-NODE_BASE_IMAGE_NAME=anirbandas/kafkaspark_edge
+NODE_BASE_IMAGE_NAME=ferria/kafkaspark
 NODE_BASE_VERSION="0.0.1"
 
 function buildImage() {
