@@ -6,16 +6,20 @@ from kafka import KafkaConsumer, KafkaProducer
 
 import markov
 import sys
+import random
+
+users = ["Emma","Noah","Olivia","Liam","Ava","William"]
 
 
 class Producer(threading.Thread):
-    def __init__(self, topic):
+    def __init__(self, topic, inclUser):
         threading.Thread.__init__(self)
         self.stop_event = threading.Event()
         self.topic = topic
         self.model = markov.make_markov()
         self.gen = markov.generate_tweets(self.model)
-        
+        self.inclUser = inclUser
+
     def stop(self):
         self.stop_event.set()
 
@@ -25,6 +29,8 @@ class Producer(threading.Thread):
 
         while not self.stop_event.is_set():
             tweet = next(self.gen)
+            if self.inclUser:
+                tweet = random.choice(users) + ':'  + tweet
             print tweet
             producer.send(self.topic, tweet)
             time.sleep(0.5)
@@ -33,9 +39,9 @@ class Producer(threading.Thread):
 
         
         
-def main(topic):
+def main(topic, inclUser):
     tasks = [
-        Producer(topic)
+        Producer(topic, inclUser)
     ]
 
     for t in tasks:
@@ -51,10 +57,12 @@ def main(topic):
         
         
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.stderr.write("Usage: tweet-count.py <topic>\n")
+    if len(sys.argv) != 3:
+        sys.stderr.write("Usage: tweet-count.py <topic> <add usernames?>\n")
         exit(-1)
 
-    topic = sys.argv[-1]
+    topic = sys.argv[-2]
+    inclUser = sys.argv[-1].lower() in {'true','t'}
     print "Topic:", topic
-    main(topic)
+    print "Include usernames?:", inclUser
+    main(topic, inclUser)
