@@ -42,13 +42,17 @@ Running programs with spark streaming: ```./run.sh <program> <args...>```
 
 ## Python Scripts
 
-Word Count: ```wc.py localhost:2181 <topic>```
+### Spark Streaming (Consumer)
 
-Tweeter: ```tweeter.py <topic>```
+Word Count: ```wc.py localhost:2181 <topic>```
 
 Top Hashtags: ```state-tweet-count.py localhost:2181 <topic>```
 
-The scripts get passed to ```run.sh```.  For example, ```./run.sh wc.py localhost:2181 <topic>```
+The above scripts get passed to ```run.sh```.  For example, ```./run.sh wc.py localhost:2181 <topic>```
+
+### Producer
+
+Tweeter: ```python tweeter.py <topic>```
 
 
 
