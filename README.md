@@ -50,7 +50,11 @@ Top Hashtags: ```state-tweet-count.py localhost:2181 <topic>```
 
 User Count Demo: ```state-user-demo.py localhost:2181 <topicname> <username>```
 
-A completed demo is available in state-user-count.py
+- A completed demo is available in ```state-user-count.py```
+
+Realtime Twitter Stream: ```realtimeTwitterStream.py```
+
+<br>
 
 The above scripts get passed to ```run.sh```.  For example, ```./run.sh wc.py localhost:2181 <topic>```
 
